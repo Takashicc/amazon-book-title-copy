@@ -1,6 +1,5 @@
 {
   "name": "amazon-book-title-copy",
-  "packageManager": "yarn@3.3.0",
   "scripts": {
     "lint": "rome check .",
     "lint:fix": "rome check --apply-suggested .",
