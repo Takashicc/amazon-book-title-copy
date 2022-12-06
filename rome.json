@@ -1,9 +1,8 @@
 {
   "linter": {
     "ignore": [
-      ".yarn",
-      ".pnp.cjs",
-      ".pnp.loader.mjs"
+      "dist",
+      "node_modules"
     ],
     "enabled": true,
     "rules": {
@@ -12,13 +11,12 @@
   },
   "formatter": {
     "ignore": [
-      ".yarn",
-      ".pnp.cjs",
-      ".pnp.loader.mjs"
+      "dist",
+      "node_modules"
     ],
     "enabled": true,
     "indentStyle": "space",
-    "indentSize": 2,
+    "indentSize": 4,
     "lineWidth": 100
   },
   "javascript": {
