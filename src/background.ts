@@ -9,6 +9,8 @@ function main() {
         console.log("Unable to find books title. Abort...");
         return;
     }
+
+    addBookTitleCopyButton(bookTitle);
 }
 
 function isBookDetailPage(): boolean {
@@ -33,6 +35,18 @@ function getBookTitle(): string {
     bookTitle = bookTitle.replace(/\s*(\d+)\s*$/, "");
 
     return bookTitle.trim();
+}
+
+function addBookTitleCopyButton(bookTitle: string) {
+    const container = document.createElement("div");
+    container.setAttribute("style", "display: flex; justify-content: center;");
+    const button = document.createElement("button");
+    button.textContent = "Copy Title";
+    button.onclick = () => {
+        navigator.clipboard.writeText(bookTitle);
+    };
+    container.appendChild(button);
+    document.querySelector("#dp-container")?.prepend(container);
 }
 
 main();
