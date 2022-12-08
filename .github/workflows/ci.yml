@@ -6,6 +6,7 @@ on:
       - main
     paths-ignore:
       - public/**
+      - docs/**
       - .editorconfig
       - .gitignore
       - README.md
@@ -14,6 +15,7 @@ on:
       - main
     paths-ignore:
       - public/**
+      - docs/**
       - .editorconfig
       - .gitignore
       - README.md
