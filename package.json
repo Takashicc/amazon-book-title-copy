@@ -1,7 +1,7 @@
 {
   "name": "amazon-book-title-copy",
   "scripts": {
-    "build": "npm run lint:fix && npm run format:fix && webpack --config webpack/webpack.config.js",
+    "build": "webpack --config webpack/webpack.config.js",
     "lint": "rome check .",
     "lint:fix": "rome check --apply-suggested .",
     "format": "rome format .",
