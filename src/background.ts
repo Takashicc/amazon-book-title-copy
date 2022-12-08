@@ -14,11 +14,16 @@ function main() {
 }
 
 function isBookDetailPage(): boolean {
-    const category = document
-        .querySelector("#wayfinding-breadcrumbs_feature_div > ul > li:nth-child(1) > span > a")
-        ?.textContent?.trim();
+    const isBookCategory =
+        document
+            .querySelector("#wayfinding-breadcrumbs_feature_div > ul > li:nth-child(1) > span > a")
+            ?.textContent?.trim() === "本";
 
-    return category === "本";
+    const isBookFromProductSubtitle = /\s*(Kindle.*|.*本.*)\s*/.test(
+        document.querySelector("#productSubtitle")?.textContent?.trim() || "",
+    );
+
+    return isBookCategory || isBookFromProductSubtitle;
 }
 
 function getBookTitle(): string {
