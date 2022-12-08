@@ -10,7 +10,7 @@ function main() {
         return;
     }
 
-    addBookTitleCopyButton(bookTitle);
+    addButton(bookTitle);
 }
 
 function isBookDetailPage(): boolean {
@@ -37,16 +37,36 @@ function getBookTitle(): string {
     return bookTitle.trim();
 }
 
-function addBookTitleCopyButton(bookTitle: string) {
+function addButton(bookTitle: string): void {
     const container = document.createElement("div");
     container.setAttribute("style", "display: flex; justify-content: center;");
+
+    const buttons = [createBookTitleCopyButton(bookTitle), createMercariSearchButton(bookTitle)];
+    for (let i = 0; i < buttons.length; i++) {
+        container.appendChild(buttons[i]);
+    }
+
+    document.querySelector("#dp-container")?.prepend(container);
+}
+
+function createBookTitleCopyButton(bookTitle: string): HTMLButtonElement {
     const button = document.createElement("button");
     button.textContent = "Copy Title";
     button.onclick = () => {
         navigator.clipboard.writeText(bookTitle);
     };
-    container.appendChild(button);
-    document.querySelector("#dp-container")?.prepend(container);
+
+    return button;
+}
+
+function createMercariSearchButton(bookTitle: string): HTMLButtonElement {
+    const button = document.createElement("button");
+    button.textContent = "Search mercari";
+    button.onclick = () => {
+        window.open(`https://jp.mercari.com/search?keyword=${encodeURI(bookTitle)}&category_id=5`);
+    };
+
+    return button;
 }
 
 main();
