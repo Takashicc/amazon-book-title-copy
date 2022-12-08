@@ -1,4 +1,4 @@
-name: lint, format
+name: Lint, Format, Build
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
     #   - main
 
 jobs:
-  rome-ci:
-    name: Lint & Format
+  build:
+    name: Lint, Format, Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -23,3 +23,12 @@ jobs:
 
       - name: Run linter & formatter
         run: rome ci .
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+
+      - name: Build
+        run: npm run build
