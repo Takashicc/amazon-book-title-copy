@@ -28,7 +28,7 @@ function getBookTitle(): string {
     }
 
     // Remove publisher text
-    bookTitle = bookTitle.replace(/\s*\(.+(文庫|ノベルライト)\)$/, "");
+    bookTitle = bookTitle.replace(/\s*\(.+(文庫|ノベルライト|専門書)\)$/, "");
     // Remove 特典付き text
     bookTitle = bookTitle.replace(/\s*【.*特典付き?】\s*/, "");
     // Remove volume number
