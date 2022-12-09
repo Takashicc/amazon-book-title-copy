@@ -70,9 +70,13 @@ function createBookTitleCopyButton(bookTitle: string): HTMLButtonElement {
 
 function createMercariSearchButton(bookTitle: string): HTMLButtonElement {
     const button = document.createElement("button");
-    button.textContent = "Search mercari";
+    button.textContent = "Search Mercari";
     button.onclick = () => {
-        window.open(`https://jp.mercari.com/search?keyword=${encodeURI(bookTitle)}&category_id=5`);
+        window.open(
+            `https://jp.mercari.com/search?keyword=${encodeURI(
+                bookTitle,
+            )}&category_id=5&order=asc&sort=price&status=on_sale`,
+        );
     };
 
     return button;
@@ -80,9 +84,13 @@ function createMercariSearchButton(bookTitle: string): HTMLButtonElement {
 
 function createRakumaSearchButton(bookTitle: string): HTMLButtonElement {
     const button = document.createElement("button");
-    button.textContent = "Search rakuma";
+    button.textContent = "Search Rakuma";
     button.onclick = () => {
-        window.open(`https://fril.jp/s?query=${encodeURI(bookTitle)}`);
+        window.open(
+            `https://fril.jp/s?query=${encodeURI(
+                bookTitle,
+            )}&sort=sell_price&order=asc&transaction=selling`,
+        );
     };
 
     return button;
