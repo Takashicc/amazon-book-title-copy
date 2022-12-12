@@ -68,32 +68,32 @@ function createBookTitleCopyButton(bookTitle: string): HTMLButtonElement {
     return button;
 }
 
-function createMercariSearchButton(bookTitle: string): HTMLButtonElement {
+function _createSearchButton(textContent: string, url: string): HTMLButtonElement {
     const button = document.createElement("button");
-    button.textContent = "Search Mercari";
+    button.textContent = textContent;
     button.onclick = () => {
-        window.open(
-            `https://jp.mercari.com/search?keyword=${encodeURI(
-                bookTitle,
-            )}&category_id=5&order=asc&sort=price&status=on_sale`,
-        );
+        window.open(url);
     };
 
     return button;
 }
 
-function createRakumaSearchButton(bookTitle: string): HTMLButtonElement {
-    const button = document.createElement("button");
-    button.textContent = "Search Rakuma";
-    button.onclick = () => {
-        window.open(
-            `https://fril.jp/s?query=${encodeURI(
-                bookTitle,
-            )}&sort=sell_price&order=asc&transaction=selling`,
-        );
-    };
+function createMercariSearchButton(bookTitle: string): HTMLButtonElement {
+    return _createSearchButton(
+        "Search Mercari",
+        `https://jp.mercari.com/search?keyword=${encodeURI(
+            bookTitle,
+        )}&category_id=5&order=asc&sort=price&status=on_sale`,
+    );
+}
 
-    return button;
+function createRakumaSearchButton(bookTitle: string): HTMLButtonElement {
+    return _createSearchButton(
+        "Search Rakuma",
+        `https://fril.jp/s?query=${encodeURI(
+            bookTitle,
+        )}&sort=sell_price&order=asc&transaction=selling`,
+    );
 }
 
 main();
