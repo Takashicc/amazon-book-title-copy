@@ -97,6 +97,8 @@ function createBookTitleCopyButton(bookTitle: string): HTMLDivElement {
     button.setAttribute("data-text", "Click to copy");
     button.setAttribute("class", "tooltip");
     button.textContent = "Copy Title";
+
+    let timeoutID: NodeJS.Timeout;
     button.onclick = () => {
         navigator.clipboard
             .writeText(bookTitle)
@@ -107,7 +109,10 @@ function createBookTitleCopyButton(bookTitle: string): HTMLDivElement {
                 button.setAttribute("data-text", "Failed to copy");
             });
 
-        setTimeout(() => {
+        if (timeoutID !== undefined) {
+            clearTimeout(timeoutID);
+        }
+        timeoutID = setTimeout(() => {
             button.setAttribute("data-text", "Click to copy");
         }, 1000);
     };
