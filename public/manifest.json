@@ -1,7 +1,7 @@
 {
   "name": "amazon-book-title-copy",
   "description": "Copying amazon book titles with a button",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "manifest_version": 3,
   "permissions": [
     "activeTab",
