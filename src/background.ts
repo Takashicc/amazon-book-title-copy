@@ -58,14 +58,64 @@ function addButton(bookTitle: string): void {
     document.querySelector("#dp-container")?.prepend(container);
 }
 
-function createBookTitleCopyButton(bookTitle: string): HTMLButtonElement {
+function createBookTitleCopyButton(bookTitle: string): HTMLDivElement {
+    const style = document.createElement("style");
+    style.innerHTML = `
+        .tooltip {
+            position: relative;
+        }
+        .tooltip::before {
+            content: attr(data-text);
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -180%);
+            position: absolute;
+            width: 110px;
+            padding: 3px;
+            border-radius: 4px;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            display: none;
+        }
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            right: 50%;
+            top: 50%;
+            transform: translate(50%, -130%);
+            border: 10px solid #000;
+            border-color: black transparent transparent transparent;
+            display: none;
+        }
+        .tooltip:hover::before, .tooltip:hover::after {
+            display: block;
+        }
+    `;
+
     const button = document.createElement("button");
+    button.setAttribute("data-text", "Click to copy");
+    button.setAttribute("class", "tooltip");
     button.textContent = "Copy Title";
     button.onclick = () => {
-        navigator.clipboard.writeText(bookTitle);
+        navigator.clipboard
+            .writeText(bookTitle)
+            .then(() => {
+                button.setAttribute("data-text", "Copied!");
+            })
+            .catch(() => {
+                button.setAttribute("data-text", "Failed to copy");
+            });
+
+        setTimeout(() => {
+            button.setAttribute("data-text", "Click to copy");
+        }, 1000);
     };
 
-    return button;
+    const div = document.createElement("div");
+    div.append(style, button);
+
+    return div;
 }
 
 interface Params {
